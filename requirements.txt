@@ -1,0 +1,5 @@
+robotframework
+robotframework-appiumlibrary
+robotframework-debuglibrary
+robotframework-pabot
+robotframework-stringformat
