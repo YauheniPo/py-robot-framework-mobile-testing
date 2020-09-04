@@ -1,0 +1,6 @@
+appPackage:
+  com.microsoft.amp.apps.bingfinance
+appActivity:
+  com.microsoft.amp.apps.bingfinance.activities.views.MainActivity
+apkName:
+  bingfinance.apk

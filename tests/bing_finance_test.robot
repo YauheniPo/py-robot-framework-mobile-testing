@@ -1,18 +1,21 @@
 *** Settings ***
 Resource                ..${/}resources${/}common.robot
-Test Setup              Setup Test
-Suite Setup             BingFinance Suite Setup
+
+Test Setup              Open APP
+Suite Setup             Setup Suite
 Test Teardown           Teardown Test
 Suite Teardown          Uninstall App
 
 
 *** Variables ***
-${EPAM_SYMBOL}          EPAM
-${EXCHANGE_NYSE}        NYSE
+${EPAM_SYMBOL}          ${symbol}
+${EXCHANGE_NYSE}        ${exchange}
 
 
 *** Test Cases ***
-Open Application On Android
+Validate ${EPAM_SYMBOL} symbol title in Watchlist
+    [Documentation]
+
     Given Header.Click And Open Navigation
     When Nav_Menu.Select Nav Item                   ${WATCHLIST}
     And Watchlist.Add Favorite                      ${EPAM_SYMBOL}          ${EXCHANGE_NYSE}

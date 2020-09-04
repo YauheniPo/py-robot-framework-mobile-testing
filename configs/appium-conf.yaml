@@ -1,0 +1,8 @@
+appiumIp:
+  127.0.0.1
+appiumPort:
+  4723
+appiumHub:
+  http://127.0.0.1:4723/wd/hub
+appiumCmd:
+  appium --address 127.0.0.1 --command-timeout "7200" --debug-log-spacing --launch-timeout "90000"
