@@ -1,0 +1,8 @@
+#saucelabs-conf.yaml
+ip:
+  ondemand.eu-central-1.saucelabs.com
+port:
+  443
+hub:
+  https://{user}:{token}@{ip}:{port}/wd/hub
+

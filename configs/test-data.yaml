@@ -1,6 +1,5 @@
+#test-data.yaml
 symbol:
   EPAM
 exchange:
   NYSE
-testDevice:
-  pixel-3

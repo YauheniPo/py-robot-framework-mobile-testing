@@ -1,34 +1,62 @@
+#robot --pythonpath . -v env:saucelabs -v saucelabsUser: -v saucelabsToken: -d ./results tests/*_test.robot
+
+*** Variable ***
+${ENV}                  %{env}
+
+
 *** Settings ***
-#robot --pythonpath . -d ./results tests/bing_finance_test.robot
 Documentation           Suite description
 
 Library                 OperatingSystem
 Library                 library${/}utils${/}cmd_helper.py
 Library                 DebugLibrary        #breakpoint keyword - Debug
 Library                 library.utils.soft_assert.SoftAssert            WITH NAME       SOFT
+Library                 library.utils.common.Common                     WITH NAME       COMMON
+Library                 Collections
 
 Resource                ..${/}library${/}pages${/}main_page.robot
 Resource                ..${/}library${/}pages${/}watchlist_page.robot
 
 Variables               ..${/}configs${/}test-data.yaml
-Variables               ..${/}configs${/}android-${testDevice}.yaml
-Variables               ..${/}configs${/}appium-conf.yaml
 Variables               ..${/}configs${/}app-config.yaml
-
-
-*** Variable ***
+Variables               ..${/}configs${/}${ENV}-conf.yaml
 
 
 *** Keywords ***
+Get BuiltIn Parameter
+    [Documentation]
+    [Arguments]                 ${key}
+
+    ${value} =                  COMMON.get builtin param        ${key}
+    [Return]                    ${value}
+
+Get Driver Capabilities
+    [Documentation]
+
+    ${caps_json_path} =         set variable                    ${EXECDIR}${/}configs${/}android-${ENV}-caps.json
+    ${caps_file} =              Get file                        ${caps_json_path}
+    ${caps_dict} =              evaluate                        json.loads('''${caps_file}''')
+    [Return]                    ${caps_dict}
+
+Get Remote URL
+    [Documentation]
+
+    ${saucelabs_user_var} =     Get_builtin_Parameter           saucelabsUser
+    ${saucelabs_token_var} =    Get_builtin_Parameter           saucelabsToken
+    ${remote_url} =             format string                   ${hub}
+    ...                         user=${saucelabs_user_var}
+    ...                         token=${saucelabs_token_var}
+    ...                         ip=${ip}
+    ...                         port=${port}
+    [Return]                    ${remote_url}
+
 Open APP
     [Documentation]
 
-    Open Application            remote_url=${appiumHub}
-    ...                         udid=${udidDevice}            platformName=${androidPlatform}
-    ...                         deviceName=${device}        platformVersion=${androidVersion}
-    ...                         appPackage=${appPackage}
-    ...                         appActivity=${appActivity}
-    ...                         noReset=True
+    ${remote_url} =             Get Remote URL
+    ${caps} =                   Get Driver Capabilities
+    Open Application            ${remote_url}
+    ...                         &{caps}
 
 Teardown Test
     [Documentation]

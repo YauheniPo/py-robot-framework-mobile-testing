@@ -1,0 +1,9 @@
+{
+  "appiumVersion": "1.15.0",
+  "deviceName": "Samsung Galaxy S8 Plus WQHD GoogleAPI Emulator",
+  "deviceOrientation": "portrait",
+  "platformVersion": "8.0",
+  "platformName": "Android",
+  "recordVideo": "true",
+  "app": "https://github.com/YauheniPo/py-robot-framework-mobile-testing/blob/master/apk/bingfinance.apk?raw=true"
+}
