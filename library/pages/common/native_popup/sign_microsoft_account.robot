@@ -4,11 +4,21 @@ Resource                    ..${/}..${/}base_page.robot
 
 *** Variables ***
 ${NO_THANKS}                No Thanks
-${SIGN IN}                  Sign In
-${BUTTON_XPATH}             //android.widget.Button[@text='{}']
+${SIGN_IN}                  Sign In
+${CANCEL}                   Cancel
+${BUTTON_FORMAT_XPATH}      //android.widget.Button[@text='{}']
 
 
 *** Keywords ***
-Sign_Microsoft.Reject if Exist
-    ${no_thanks_button_xpath} =         format string       ${BUTTON_XPATH}     ${NO_THANKS}
-    Run Keyword And Ignore Error        Click               ${no_thanks_button_xpath}       2
+Native_Popup.Click Button
+    [Documentation]
+    [Arguments]                         ${button_text}
+
+    ${button_xpath} =                   format string       ${BUTTON_FORMAT_XPATH}          ${button_text}
+    Run Keyword And Ignore Error        Click               ${button_xpath}                 2
+
+Native_Popup.Sign_Microsoft.Reject if Exist
+    Native_Popup.Click Button           ${NO_THANKS}
+
+Native_Popup.Location_Editor.Reject if Exist
+    Native_Popup.Click Button           ${CANCEL}

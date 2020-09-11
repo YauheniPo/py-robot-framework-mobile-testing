@@ -1,3 +1,4 @@
+#app-config.yaml
 appPackage:
   com.microsoft.amp.apps.bingfinance
 appActivity:

@@ -16,10 +16,11 @@ ${EXCHANGE_NYSE}        ${exchange}
 Validate ${EPAM_SYMBOL} symbol title in Watchlist
     [Documentation]
 
-    Given Header.Click And Open Navigation
+    Given Native_Popup.Location_Editor.Reject if Exist
+    And Header.Click And Open Navigation
     When Nav_Menu.Select Nav Item                   ${WATCHLIST}
     And Watchlist.Add Favorite                      ${EPAM_SYMBOL}          ${EXCHANGE_NYSE}
-    And Sign_Microsoft.Reject if Exist
+    And Native_Popup.Sign_Microsoft.Reject if Exist
     ${symbol} =                                     Then Watchlist.Get Symbol Model
-    And SOFT.should be equal as strings             ${symbol}               ${EPAM_SYMBOL}
+    Then SOFT.should be equal as strings            ${symbol}               ${EPAM_SYMBOL}
     ...                                             Symbol title is incorrect
