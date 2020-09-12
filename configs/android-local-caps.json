@@ -3,5 +3,6 @@
   "androidPlatform": "Android",
   "platformName": "Android",
   "device": "Pixel_3_API_26",
-  "androidVersion": "8.0.0"
+  "androidVersion": "8.0.0",
+  "app": "bingfinance.apk"
 }
