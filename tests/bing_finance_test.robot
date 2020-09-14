@@ -1,10 +1,7 @@
 *** Settings ***
 Resource                ..${/}resources${/}common.robot
 
-Test Setup              Open APP
-Suite Setup             Setup Suite
-Test Teardown           Teardown Test
-Suite Teardown          Uninstall App
+Test Teardown           Fail Screen & Reset APP
 
 
 *** Variables ***
