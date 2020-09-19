@@ -3,7 +3,7 @@ Resource                    ..${/}..${/}base_page.robot
 
 
 *** Variables ***
-${NO_THANKS}                No Thanks
+${NO_THANKS}                No, thanks
 ${SIGN_IN}                  Sign In
 ${CANCEL}                   Cancel
 ${BUTTON_FORMAT_XPATH}      //android.widget.Button[@text='{}']

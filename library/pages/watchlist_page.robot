@@ -3,10 +3,10 @@ Resource                    base_page.robot
 
 
 *** Variables ***
-${ADD_FAVORITE_ID}          com.microsoft.amp.apps.bingfinance:id/add_favorite_glyph
-${SEARCH_INPUT_FIELD_ID}    com.microsoft.amp.apps.bingfinance:id/autosuggest_form_sheet_autosuggest_view
+${ADD_FAVORITE_ID}          add_favorite_glyph
+${SEARCH_INPUT_FIELD_ID}    autosuggest_form_sheet_autosuggest_view
 ${SEARCH_RESULT_XPATH}      //*[contains(@resource-id, 'autosuggest_form_sheet_results')]//*[./*[@text='{}']][./*[@text='{}']]
-${SYMBOL_TITLE}             com.microsoft.amp.apps.bingfinance:id/watchlist_item_title
+${SYMBOL_TITLE_ID}          watchlist_item_title
 
 
 *** Keywords ***
@@ -29,5 +29,5 @@ Watchlist.Add Favorite
     Watchlist.Select Searched Symbol    ${symbol}               ${exchange}
 
 Watchlist.Get Symbol Model
-    ${symbol} =             Get Text    ${SYMBOL_TITLE}
+    ${symbol} =             Get Text    ${SYMBOL_TITLE_ID}
     [Return]                ${symbol}

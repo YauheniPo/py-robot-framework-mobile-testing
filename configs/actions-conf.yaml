@@ -1,0 +1,7 @@
+#local-conf.yaml
+ip:
+  127.0.0.1
+port:
+  4723
+hub:
+  http://{ip}:{port}/wd/hub
